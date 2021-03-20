@@ -6,7 +6,7 @@
 
 # @Email ： 281232686@qq.com
 class Calc:
-    def add(self, a, b):
+    def add(self, a:int, b:int) -> int:
         return a + b
 
     def div(self, a, b):

@@ -13,7 +13,7 @@ class TestCalc:
     def test_add(self):
         self.calc = calc.Calc()
         result1 = self.calc.add(1, 2)
-        print(result1)
+        print(result1.)
 
     def test_div(self):
         self.calc = calc.Calc()
