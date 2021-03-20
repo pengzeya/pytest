@@ -12,16 +12,18 @@ sys.path.append('..')
 class TestCalc:
     def setup(self):
         pass
-    @pytest.mark.run(order=2)
-    def test_add(self):
+    @pytest.mark.parametrize('data1,data2,expect',[(1,2,3)])
+    def test_add(self,data1,data2,expect):
         self.calc = calc.Calc()
-        result1 = self.calc.add(1, 2)
+        result1 = self.calc.add(data1, data2)
         print(result1)
-    @pytest.mark.run(order=1)
-    def test_add_1(self):
+        assert expect ==result1
+
+    def test_add_1(self,data1,data2,expect):
         self.calc = calc.Calc()
-        result1 = self.calc.add(1, 2)
+        result1 = self.calc.add(data1, data2)
         print(result1)
+        assert expect == result1
 
     def test_div(self):
         self.calc = calc.Calc()
