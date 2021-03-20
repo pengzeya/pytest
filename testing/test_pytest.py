@@ -5,15 +5,23 @@
 import pytest
 
 from python import calc
+import sys
 
+sys.path.append('..')
 
 class TestCalc:
     def setup(self):
         pass
+    @pytest.mark.run(order=2)
     def test_add(self):
         self.calc = calc.Calc()
         result1 = self.calc.add(1, 2)
-        print(result1.)
+        print(result1)
+    @pytest.mark.run(order=1)
+    def test_add_1(self):
+        self.calc = calc.Calc()
+        result1 = self.calc.add(1, 2)
+        print(result1)
 
     def test_div(self):
         self.calc = calc.Calc()
@@ -22,3 +30,4 @@ class TestCalc:
 
 if __name__ == '__main__':
     pytest.main()
+
