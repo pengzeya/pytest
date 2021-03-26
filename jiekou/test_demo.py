@@ -5,6 +5,7 @@
 import requests
 from jsonpath import jsonpath
 from hamcrest import *
+from requests.auth import HTTPBasicAuth
 class TestDemo:
     def test_get(self):
         r = requests.get('http://httpbin.testing-studio.com/get')
@@ -86,5 +87,10 @@ class TestDemo:
         }
         r =requests.get(url= url, headers = header,cookies =cookie_data)
         print(r.request.headers)
+
+    def test_oauth(self):
+        r =requests.get(url='http://httpbin.testing-studio.com/basic-auth/281232686/11111111',
+                     auth =("281232686","11111111"))
+        print(r.text)
 
 
