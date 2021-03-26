@@ -4,6 +4,7 @@
 # @Email ： 281232686@qq.com
 import requests
 from jsonpath import jsonpath
+from hamcrest import *
 class TestDemo:
     def test_get(self):
         r = requests.get('http://httpbin.testing-studio.com/get')
@@ -58,4 +59,32 @@ class TestDemo:
         assert r.json()['category_list']['categories'][0]['name'] == '开源项目'
         print(jsonpath(r.json(), '$..name'))
         assert jsonpath(r.json(),'$..name')[0] == '开源项目'
+
+    def test_hamcresr(self):
+        r = requests.get('http://ceshiren.com/categories.json')
+        print(r.text)
+        assert r.status_code == 200
+        assert_that(r.json()['category_list']['categories'][0]['name']),equal_to('开源项目')
+        assert_that()
+
+    def test_demo1(self):
+        url ='http://httpbin.testing-studio.com/cookies'
+        header = {"Cookie":"name=pengzeya",
+                  "User-Agent":"lalala"
+                    }
+        r =requests.get(url= url, headers = header)
+        print(r.request.headers)
+
+    def test_demo2(self):
+        url ='http://httpbin.testing-studio.com/cookies'
+        header = {
+                  "User-Agent":"lalala"
+                    }
+        cookie_data = {
+            "cookiesss":"school",
+            "teacher":"naida"
+        }
+        r =requests.get(url= url, headers = header,cookies =cookie_data)
+        print(r.request.headers)
+
 
